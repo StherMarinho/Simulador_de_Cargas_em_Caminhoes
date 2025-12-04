@@ -22,10 +22,7 @@ com acesso ao banco de dados via **Dapper** e MySQL.
 
 - **C# .NET 8**  
 - **Dapper**  
-- **MySQL**  
-- **Dependency Injection**  
-- **DTOs**  
-- **Algoritmo de Dijkstra**
+- **MySQL** 
 
 ## Estrutura do Projeto
 
