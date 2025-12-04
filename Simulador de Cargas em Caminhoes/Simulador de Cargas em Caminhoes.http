@@ -1,0 +1,6 @@
+@Simulador_de_Cargas_em_Caminhoes_HostAddress = http://localhost:5020
+
+GET {{Simulador_de_Cargas_em_Caminhoes_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
