@@ -8,8 +8,6 @@ O sistema segue a arquitetura:
 
 com acesso ao banco de dados via **Dapper** e MySQL.
 
----
-
 ## Funcionalidades
 
 - Cadastro de caminhões  
@@ -20,8 +18,6 @@ com acesso ao banco de dados via **Dapper** e MySQL.
 - Identificação do menor caminho entre pontos usando Dijkstra  
 - API organizada seguindo boas práticas (DTOs, Services, Repositories)
 
----
-
 ## Tecnologias Utilizadas
 
 - **C# .NET 8**  
@@ -30,8 +26,6 @@ com acesso ao banco de dados via **Dapper** e MySQL.
 - **Dependency Injection**  
 - **DTOs**  
 - **Algoritmo de Dijkstra**
-
----
 
 ## Estrutura do Projeto
 
