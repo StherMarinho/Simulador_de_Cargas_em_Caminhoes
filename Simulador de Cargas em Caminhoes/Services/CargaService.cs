@@ -15,6 +15,15 @@ namespace Simulador_de_Cargas_em_Caminhoes.Services
             _cargaRepository = cargaRepository;
             _caminhaoRepository = caminhaoRepository;
         }
+        public List<Carga> ObtemCargas()
+        {
+            return _cargaRepository.ObtemCargas();
+        }
+        public Carga ObtemCarga(int id)
+        {
+            return _cargaRepository.ObtemCarga(id) ??
+                   throw new Exception("Carga não encontrada");
+        }
 
         public int CriarCarga(CriaCargaDTO cargaDto)
         {

@@ -1,5 +1,4 @@
 ﻿using Simulador_de_Cargas_em_Caminhoes.Models;
-using Simulador_de_Cargas_em_Caminhoes.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Simulador_de_Cargas_em_Caminhoes.DTOs.Caminhao;
 using Simulador_de_Cargas_em_Caminhoes.Services;
@@ -10,12 +9,10 @@ namespace Simulador_de_Cargas_em_Caminhoes.Controllers
     [Route("[controller]")]
     public class CaminhaoController : ControllerBase
     {
-        private readonly CaminhaoRepository _caminhaoRepository;
         private readonly CaminhaoService _caminhaoService;
 
-        public CaminhaoController(CaminhaoRepository caminhaoRepository, CaminhaoService caminhaoService)
+        public CaminhaoController(CaminhaoService caminhaoService)
         {
-            _caminhaoRepository = caminhaoRepository;
             _caminhaoService = caminhaoService;
         }
 
@@ -24,7 +21,7 @@ namespace Simulador_de_Cargas_em_Caminhoes.Controllers
         {
             try
             {
-                var caminhoes = _caminhaoRepository.ObtemCaminhoes();
+                var caminhoes = _caminhaoService.ObterCaminhoesDisponiveis();
                 return Ok(caminhoes);
             }
             catch (Exception ex)
@@ -38,7 +35,7 @@ namespace Simulador_de_Cargas_em_Caminhoes.Controllers
         {
             try
             {
-                var caminhao = _caminhaoRepository.ObtemCaminhao(id);
+                var caminhao = _caminhaoService.ObterCaminhao(id);
                 return Ok(caminhao);
             }
             catch (Exception ex)
@@ -59,7 +56,7 @@ namespace Simulador_de_Cargas_em_Caminhoes.Controllers
                     CargaMax = caminhaoDTO.CargaMax
                 };
 
-                var id = _caminhaoRepository.CriaCaminhao(caminhaoDTO);
+                var id = _caminhaoService.RegistrarCaminhao(caminhaoDTO);
                 return Ok(new { id });
             }
             catch (Exception ex)

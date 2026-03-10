@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Simulador_de_Cargas_em_Caminhoes.DTOs.Carga;
 using Simulador_de_Cargas_em_Caminhoes.Models;
-using Simulador_de_Cargas_em_Caminhoes.Repositories;
 using Simulador_de_Cargas_em_Caminhoes.Services;
 
 namespace Simulador_de_Cargas_em_Caminhoes.Controllers
@@ -10,12 +9,10 @@ namespace Simulador_de_Cargas_em_Caminhoes.Controllers
     [Route("[controller]")]
     public class CargaController : ControllerBase
     {
-        private readonly CargaRepository _cargaRepository;
         private readonly CargaService _cargaService;
 
-        public CargaController(CargaRepository cargaRepository, CargaService cargaService)
+        public CargaController(CargaService cargaService)
         {
-            _cargaRepository = cargaRepository;
             _cargaService = cargaService;
         }
 
@@ -24,7 +21,7 @@ namespace Simulador_de_Cargas_em_Caminhoes.Controllers
         {
             try
             {
-                var cargas = _cargaRepository.ObtemCargas();
+                var cargas = _cargaService.ObtemCargas();
                 return Ok(cargas);
             }
             catch (Exception ex)
@@ -38,7 +35,7 @@ namespace Simulador_de_Cargas_em_Caminhoes.Controllers
         {
             try
             {
-                var carga = _cargaRepository.ObtemCarga(id);
+                var carga = _cargaService.ObtemCarga(id);
                 return Ok(carga);
             }
             catch (Exception ex)
@@ -53,7 +50,7 @@ namespace Simulador_de_Cargas_em_Caminhoes.Controllers
             try
             {
                 var carga = new Carga { Peso = cargaDTO.Peso, DestinoX = cargaDTO.DestinoX, DestinoY = cargaDTO.DestinoY, Prioridade = cargaDTO.Prioridade };
-                var id = _cargaRepository.CriaCarga(cargaDTO);
+                var id = _cargaService.CriarCarga(cargaDTO);
                 return Ok(new { id });
             }
             catch (Exception ex)
